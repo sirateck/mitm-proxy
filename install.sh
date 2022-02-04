@@ -16,13 +16,13 @@ pm2 install typescript
 # clone proxy script
 git clone https://github.com/sirateck/mitm-proxy.git
 
-chown -R $USER:$USER mitm-proxy/
+# chown -R $USER:$USER mitm-proxy/
 
 bash -c "cd mitm-proxy && yarn install"
 
 # start proxy application
-sudo -u $USER pm2 start $(pwd)/mitm-proxy/index.ts
+pm2 start $(pwd)/mitm-proxy/index.ts
 
-sudo -u $USER pm2 save
+pm2 save
 
-env PATH=$PATH:/usr/bin /usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 startup systemd -u debian --hp $HOME
+env PATH=$PATH:/usr/bin /usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 startup systemd -u root --hp /root
