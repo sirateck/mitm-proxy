@@ -1,7 +1,6 @@
 #!/bin/env ts-node
-const port = 8081;
+const port = 3131;
 import net from "net";
-import assert from "assert";
 import Proxy from "http-mitm-proxy";
 const proxy = Proxy();
 
