@@ -10,10 +10,13 @@ npm install --global yarn
 # install pm2 to demonize the proxy script
 yarn global add pm2 typescript ts-node
 
+# install pm2 typescript
+pm2 install typescript
+
 # clone proxy script
 git clone https://github.com/sirateck/mitm-proxy.git
 
-chown -R $USER:$USER mitm-proxy
+chown -R $USER:$USER mitm-proxy/
 
 # start proxy application
-pm2 start $(pwd)/mitm-proxy/index.ts
+sudo -u $USER pm2 start $(pwd)/mitm-proxy/index.ts
