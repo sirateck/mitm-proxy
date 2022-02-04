@@ -2,7 +2,7 @@
 # Install nodejs 16x Using Debian, as root
 NODE_MAJOR_VERSION=16.x
 curl -fsSL https://deb.nodesource.com/setup_$NODE_MAJOR_VERSION | bash -
-apt-get install -y nodejs
+apt-get update && apt-get install -y nodejs git
 
 # install yarn
 npm install --global yarn
