@@ -13,7 +13,5 @@ sudo -u $USER yarn global add pm2
 # clone proxy script
 sudo -u $USER git clone https://github.com/sirateck/mitm-proxy.git
 
-cd mitm-proxy
-
 # start proxy application
-sudo -u $USER pm2 start index.ts
+sudo -u $USER pm2 start $(pwd)/mitm-proxy/index.ts
