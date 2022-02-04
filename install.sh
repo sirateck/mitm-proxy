@@ -11,7 +11,7 @@ npm install --global yarn
 yarn global add pm2
 
 # clone proxy script
-git clone git@github.com:sirateck/mitm-proxy.git
+git clone https://github.com/sirateck/mitm-proxy.git
 
 cd mitm-proxy
 
