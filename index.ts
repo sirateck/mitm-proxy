@@ -6,8 +6,8 @@ import Proxy from "http-mitm-proxy";
 const proxy = Proxy();
 
 proxy.onConnect(function(req, socket, head) {
-  const host = req.url.split(":")[0];
-  const port = req.url.split(":")[1];
+  const host = req?.url?.split(":")[0];
+  const port = req?.url?.split(":")[1] ?? '443';
 
   console.log('Tunnel to', req.url);
   const conn = net.connect({
@@ -28,15 +28,15 @@ proxy.onConnect(function(req, socket, head) {
   });
 
   conn.on('error', function(err) {
-    filterSocketConnReset(err, 'PROXY_TO_SERVER_SOCKET');
+    filterSocketConnReset(err as Error & {errno:string}, 'PROXY_TO_SERVER_SOCKET');
   });
   socket.on('error', function(err) {
-    filterSocketConnReset(err, 'CLIENT_TO_PROXY_SOCKET');
+    filterSocketConnReset(err as Error & {errno:string}, 'CLIENT_TO_PROXY_SOCKET');
   });
 });
 
 // Since node 0.9.9, ECONNRESET on sockets are no longer hidden
-function filterSocketConnReset(err, socketDescription) {
+function filterSocketConnReset(err: Error & {errno:string}, socketDescription:string) {
   if (err.errno === 'ECONNRESET') {
     console.log('Got ECONNRESET on ' + socketDescription + ', ignoring.');
   } else {
