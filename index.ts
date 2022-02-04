@@ -1,3 +1,4 @@
+#!/bin/env ts-node
 const port = 8081;
 import net from "net";
 import assert from "assert";

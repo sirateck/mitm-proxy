@@ -5,13 +5,15 @@ curl -fsSL https://deb.nodesource.com/setup_$NODE_MAJOR_VERSION | bash -
 apt-get update && apt-get install -y nodejs git
 
 # install yarn
-sudo -u $USER npm install --global yarn
+npm install --global yarn
 
 # install pm2 to demonize the proxy script
-sudo -u $USER yarn global add pm2
+yarn global add pm2 typescript ts-node
 
 # clone proxy script
-sudo -u $USER git clone https://github.com/sirateck/mitm-proxy.git
+git clone https://github.com/sirateck/mitm-proxy.git
+
+chown -R $USER:$USER mitm-proxy
 
 # start proxy application
-sudo -u $USER pm2 start $(pwd)/mitm-proxy/index.ts
+pm2 start $(pwd)/mitm-proxy/index.ts
