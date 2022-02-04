@@ -1,0 +1,16 @@
+{
+  "name": "@spymarket/mitm-proxy",
+  "version": "1.0.0",
+  "description": "custom mitm proxy",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "http-mitm-proxy": "^0.9.0",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.22",
+    "typescript": "^4.5.5"
+  }
+}
