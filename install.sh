@@ -2,18 +2,18 @@
 # Install nodejs 16x Using Debian, as root
 NODE_MAJOR_VERSION=16.x
 curl -fsSL https://deb.nodesource.com/setup_$NODE_MAJOR_VERSION | bash -
-sudo apt-get update && sudo apt-get install -y nodejs git
+apt-get update && apt-get install -y nodejs git
 
 # install yarn
-npm install --global yarn
+sudo -u $USER npm install --global yarn
 
 # install pm2 to demonize the proxy script
-yarn global add pm2
+sudo -u $USER yarn global add pm2
 
 # clone proxy script
-git clone https://github.com/sirateck/mitm-proxy.git
+sudo -u $USER git clone https://github.com/sirateck/mitm-proxy.git
 
-cd mitm-proxy
+sudo -u $USER cd mitm-proxy
 
 # start proxy application
-pm2 start index.ts
+sudo -u $USER pm2 start index.ts

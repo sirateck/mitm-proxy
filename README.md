@@ -2,4 +2,4 @@
 
 # Install on debian
 
-`curl -s https://raw.githubusercontent.com/sirateck/mitm-proxy/main/install.sh | bash`
+`curl -s https://raw.githubusercontent.com/sirateck/mitm-proxy/main/install.sh | sudo bash`
